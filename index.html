@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Trashure-Hunters™ — Clean the World. Win the Game.</title>
+<meta name="description" content="Trashure-Hunters is a real-world adventure game where cleaning up actual trash heals a magical world. Pokémon GO meets Ingress meets a Pixar environmental movie. Join the waitlist." />
+<meta name="theme-color" content="#0A0A2E" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Trashure-Hunters™ — Clean the World. Win the Game." />
+<meta property="og:description" content="A real-world adventure game where cleaning up actual trash heals a magical world. Join the waitlist." />
+<meta property="og:image" content="assets/logos/TH_logo.png" />
+
+<link rel="icon" href="assets/logos/TH_icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --orange:#FF6C00;
+    --orange-light:#FF7B1A;
+    --navy:#0A0A2E;
+    --slate:#2E3C4B;
+    --green:#22C55E;
+    --gold:#FCD34D;
+    --charcoal:#1E1E1E;
+    --neutral:#F5F5F5;
+
+    --c-space:#D94FAA;
+    --c-air:#5B2D8E;
+    --c-water:#4BA3E3;
+    --c-earth:#2EBD8A;
+    --c-fire:#F5961E;
+    --c-light:#FCD34D;
+
+    --maxw:1120px;
+    --radius:20px;
+    --shadow:0 20px 50px -20px rgba(0,0,0,.55);
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    color:var(--neutral);
+    background:var(--navy);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  section{position:relative}
+
+  h1,h2,h3{line-height:1.08;letter-spacing:-.02em;font-weight:800}
+  .eyebrow{
+    display:inline-block;font-weight:700;font-size:.78rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--orange-light);margin-bottom:14px;
+  }
+  .lead{font-size:1.15rem;color:#c7cdda;max-width:60ch}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:.5em;
+    font-weight:700;font-size:1rem;padding:15px 30px;border-radius:999px;
+    cursor:pointer;border:none;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s;
+    white-space:nowrap;
+  }
+  .btn-primary{background:linear-gradient(135deg,var(--orange),var(--orange-light));color:#fff;box-shadow:0 12px 30px -8px rgba(255,108,0,.6)}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 40px -8px rgba(255,108,0,.75)}
+  .btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.18)}
+  .btn-ghost:hover{background:rgba(255,255,255,.16);transform:translateY(-3px)}
+
+  /* ===== NAV ===== */
+  header.nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    transition:background .3s,backdrop-filter .3s,box-shadow .3s;
+  }
+  header.nav.scrolled{background:rgba(10,10,46,.82);backdrop-filter:blur(14px);box-shadow:0 1px 0 rgba(255,255,255,.06)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .nav-logo{display:flex;align-items:center;gap:10px;font-weight:800}
+  .nav-logo img{height:38px;width:auto}
+  .nav-links{display:flex;align-items:center;gap:30px}
+  .nav-links a.lnk{font-weight:600;font-size:.95rem;color:#c7cdda;transition:color .2s}
+  .nav-links a.lnk:hover{color:#fff}
+  .nav-cta{padding:10px 22px;font-size:.9rem}
+  @media(max-width:780px){.nav-links a.lnk{display:none}}
+
+  /* ===== HERO ===== */
+  .hero{
+    min-height:100vh;display:flex;align-items:center;
+    padding:120px 0 80px;
+    background:
+      radial-gradient(900px 500px at 80% 8%,rgba(255,108,0,.20),transparent 60%),
+      radial-gradient(800px 600px at 5% 90%,rgba(34,197,94,.16),transparent 60%),
+      linear-gradient(180deg,var(--navy),#0d0d38 60%,var(--slate));
+  }
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+  .hero-logo{max-width:440px;margin-bottom:8px;filter:drop-shadow(0 14px 30px rgba(0,0,0,.45))}
+  .hero h1{
+    font-size:clamp(2.5rem,6vw,4.6rem);font-weight:900;margin:18px 0 18px;
+    background:linear-gradient(120deg,#fff 30%,#ffe3c4 70%,var(--orange-light));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .hero .lead{font-size:1.25rem;margin-bottom:14px}
+  .hero .posit{font-style:italic;color:var(--gold);font-weight:600;margin-bottom:30px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-art{position:relative;display:flex;justify-content:center;align-items:center;min-height:380px}
+  .hero-art .glow{
+    position:absolute;width:78%;aspect-ratio:1;border-radius:50%;
+    background:radial-gradient(circle,rgba(75,163,227,.45),transparent 65%);filter:blur(10px);
+  }
+  .hero-art img.creature{
+    position:relative;width:min(360px,80%);
+    filter:drop-shadow(0 30px 40px rgba(0,0,0,.5));
+    animation:float 5s ease-in-out infinite;
+  }
+  .hero-art .mini{position:absolute;width:90px;filter:drop-shadow(0 12px 18px rgba(0,0,0,.45))}
+  .hero-art .mini.a{top:4%;right:8%;animation:float 4s ease-in-out infinite}
+  .hero-art .mini.b{bottom:6%;left:4%;width:74px;animation:float 6s ease-in-out infinite .6s}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+  @media(max-width:880px){
+    .hero-grid{grid-template-columns:1fr;text-align:center}
+    .hero-logo{margin:0 auto 8px}
+    .hero .lead,.hero .posit{margin-left:auto;margin-right:auto}
+    .hero-actions{justify-content:center}
+    .hero-art{order:-1;min-height:300px}
+  }
+
+  /* ===== generic section ===== */
+  .pad{padding:100px 0}
+  .center{text-align:center;max-width:680px;margin:0 auto}
+  h2.title{font-size:clamp(2rem,4.4vw,3rem);margin-bottom:18px}
+  .sub{color:#aeb5c6}
+
+  /* ===== CONCEPT ===== */
+  .concept{background:linear-gradient(180deg,var(--slate),#243140)}
+  .concept-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .concept-card{
+    background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);
+    border-radius:var(--radius);padding:30px;box-shadow:var(--shadow);
+  }
+  .contract{
+    display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:center;
+    font-weight:800;font-size:clamp(1.1rem,2.6vw,1.6rem);text-align:center;
+  }
+  .contract .real{color:var(--green)}
+  .contract .game{color:var(--c-water)}
+  .contract .arrow{color:var(--orange);font-size:1.6em;line-height:1}
+  .concept-art{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:center}
+  .concept-art .vs{
+    grid-column:1/-1;text-align:center;font-weight:900;color:var(--orange);letter-spacing:.2em;font-size:.8rem
+  }
+  .face{border-radius:18px;padding:16px;text-align:center;border:1px solid rgba(255,255,255,.08)}
+  .face img{margin:0 auto 8px;height:150px;width:auto;object-fit:contain}
+  .face.neglect{background:linear-gradient(180deg,#3a2e24,#2a221b)}
+  .face.hope{background:linear-gradient(180deg,#13343a,#10262b)}
+  .face small{display:block;font-weight:700;color:#cfd6e2;font-size:.82rem}
+  @media(max-width:880px){.concept-grid{grid-template-columns:1fr;gap:32px}}
+
+  /* ===== HOW IT WORKS ===== */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:50px}
+  .step{
+    background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+    border-radius:var(--radius);padding:30px 24px;transition:transform .3s var(--ease),border-color .3s;
+  }
+  .step:hover{transform:translateY(-8px);border-color:rgba(255,108,0,.5)}
+  .step .num{
+    width:46px;height:46px;border-radius:14px;display:grid;place-items:center;
+    font-weight:900;font-size:1.1rem;color:#fff;margin-bottom:18px;
+    background:linear-gradient(135deg,var(--orange),var(--orange-light));
+  }
+  .step h3{font-size:1.18rem;margin-bottom:8px}
+  .step p{color:#aeb5c6;font-size:.96rem}
+  @media(max-width:880px){.steps{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.steps{grid-template-columns:1fr}}
+
+  /* ===== ELEMONSTERS ===== */
+  .elemonsters{background:linear-gradient(180deg,#0d0d38,var(--navy))}
+  .ele-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:50px}
+  .ele{
+    position:relative;border-radius:var(--radius);padding:30px 22px 26px;text-align:center;
+    background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);
+    overflow:hidden;transition:transform .3s var(--ease);
+  }
+  .ele:hover{transform:translateY(-8px)}
+  .ele .halo{
+    position:absolute;top:-30%;left:50%;transform:translateX(-50%);
+    width:80%;aspect-ratio:1;border-radius:50%;opacity:.5;filter:blur(28px);z-index:0;
+  }
+  .ele img{position:relative;z-index:1;height:150px;width:auto;margin:0 auto 16px;object-fit:contain;
+    filter:drop-shadow(0 16px 22px rgba(0,0,0,.5));transition:transform .35s var(--ease)}
+  .ele:hover img{transform:scale(1.08) translateY(-4px)}
+  .ele h3{font-size:1.3rem;margin-bottom:2px}
+  .ele .elem{font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase}
+  .ele .realm{color:#9aa2b4;font-size:.9rem;margin-top:6px}
+  @media(max-width:880px){.ele-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.ele-grid{grid-template-columns:1fr}}
+
+  /* ===== IMPACT ===== */
+  .impact{background:linear-gradient(180deg,var(--navy),#10241a)}
+  .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:50px}
+  .stat{
+    text-align:center;padding:34px 22px;border-radius:var(--radius);
+    background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.22);
+  }
+  .stat .big{font-size:clamp(2.2rem,5vw,3.2rem);font-weight:900;color:var(--green);line-height:1}
+  .stat .lbl{color:#bfe6cd;margin-top:10px;font-weight:600}
+  @media(max-width:780px){.stat-grid{grid-template-columns:1fr;gap:16px}}
+  .impact-note{margin-top:46px;text-align:center;font-size:1.15rem;color:#d7eadf}
+  .impact-note b{color:var(--gold)}
+
+  /* ===== WAITLIST ===== */
+  .waitlist{
+    background:
+      radial-gradient(700px 400px at 50% 0%,rgba(255,108,0,.22),transparent 60%),
+      linear-gradient(180deg,#10241a,var(--navy));
+  }
+  .wl-card{
+    max-width:680px;margin:0 auto;text-align:center;
+    background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);
+    border-radius:28px;padding:54px 40px;box-shadow:var(--shadow);
+  }
+  .wl-card h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:12px}
+  .wl-form{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;justify-content:center}
+  .wl-form input{
+    flex:1;min-width:240px;padding:16px 20px;border-radius:999px;border:1px solid rgba(255,255,255,.2);
+    background:rgba(0,0,0,.25);color:#fff;font-size:1rem;font-family:inherit;outline:none;transition:border .2s;
+  }
+  .wl-form input:focus{border-color:var(--orange)}
+  .wl-form input::placeholder{color:#8a91a3}
+  .wl-msg{margin-top:18px;font-weight:600;min-height:1.2em}
+  .wl-msg.ok{color:var(--green)}
+  .wl-msg.err{color:#ff8a8a}
+  .wl-fine{margin-top:14px;font-size:.82rem;color:#8a91a3}
+
+  /* ===== FOOTER ===== */
+  footer{padding:54px 0 40px;background:var(--navy);border-top:1px solid rgba(255,255,255,.07)}
+  .foot-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .foot-brand{display:flex;align-items:center;gap:14px}
+  .foot-brand img{height:34px}
+  .foot-brand .studio img{height:26px;opacity:.9}
+  .foot-meta{color:#8a91a3;font-size:.85rem;text-align:right}
+  .foot-meta a:hover{color:#fff}
+  @media(max-width:620px){.foot-inner{flex-direction:column;text-align:center}.foot-meta{text-align:center}}
+
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    .hero-art img.creature,.hero-art .mini{animation:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="nav-logo" href="#top">
+      <img src="assets/logos/TH_icon.png" alt="Trashure-Hunters icon" />
+      <span>Trashure-Hunters<sup style="font-size:.6em">™</sup></span>
+    </a>
+    <nav class="nav-links">
+      <a class="lnk" href="#concept">Concept</a>
+      <a class="lnk" href="#how">How It Works</a>
+      <a class="lnk" href="#elemonsters">Elemonsters</a>
+      <a class="lnk" href="#impact">Impact</a>
+      <a class="btn btn-primary nav-cta" href="#waitlist">Join Waitlist</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <img class="hero-logo" src="assets/logos/logo_H.png" alt="Trashure-Hunters logo" />
+      <h1>Clean the World.<br/>Win the Game.</h1>
+      <p class="lead">A real-world adventure where the trash you clean up in real life heals a living, magical world — and the creatures who call it home.</p>
+      <p class="posit">"Pokémon GO meets Ingress meets a Pixar environmental movie."</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#waitlist">Join the Waitlist →</a>
+        <a class="btn btn-ghost" href="#how">See How It Works</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="glow"></div>
+      <img class="creature" src="assets/elemonsters/water_Elemonster.png" alt="Bloop, the water Elemonster" />
+      <img class="mini a" src="assets/elemonsters/fire_Elemonster.png" alt="Blazo, the fire Elemonster" />
+      <img class="mini b" src="assets/elemonsters/earth_Elemonster.png" alt="Sproutz, the earth Elemonster" />
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONCEPT ===== -->
+<section class="concept pad" id="concept">
+  <div class="wrap concept-grid">
+    <div class="reveal">
+      <span class="eyebrow">The Big Idea</span>
+      <h2 class="title">Your cleanup is their cure.</h2>
+      <p class="lead" style="margin-bottom:26px">Every piece of real-world litter you pick up sends a ripple into the game world — restoring poisoned realms, reviving Elemonsters, and turning your neighborhood into a living game board.</p>
+      <div class="concept-card">
+        <div class="contract">
+          <span class="real">Clean real trash</span>
+          <span class="arrow">→</span>
+          <span class="game">Heal the game world</span>
+        </div>
+      </div>
+      <p class="sub" style="margin-top:22px"><b>No villains — only neglect.</b> The world isn't under attack. It's just been forgotten. Hunters bring it back.</p>
+    </div>
+    <div class="concept-art reveal">
+      <div class="face neglect">
+        <img src="assets/elemonsters/kingGrime.png" alt="King Grime, the embodiment of neglect" />
+        <small>Neglect &amp; pollution</small>
+      </div>
+      <div class="face hope">
+        <img src="assets/elemonsters/space_Elemonster.png" alt="Cosmix, a restored Elemonster" />
+        <small>A world restored</small>
+      </div>
+      <div class="vs">YOU DECIDE WHICH WINS</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="pad" id="how">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">How It Works</span>
+      <h2 class="title">Four steps to become a Hunter</h2>
+      <p class="sub">No gear, no grind — just your phone and the world around you.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="num">1</div><h3>Explore the map</h3><p>A live, GPS-powered map turns your real surroundings into a world of realms, quests, and hidden treasure.</p></div>
+      <div class="step reveal"><div class="num">2</div><h3>Scan with the Trash-Cam</h3><p>Spot litter? Point your AI Trash-Cam at it. It identifies the trash and marks it as a target.</p></div>
+      <div class="step reveal"><div class="num">3</div><h3>Clean it up</h3><p>Pick it up, bin it, snap the proof. Real-world action is the only way to power up in the game.</p></div>
+      <div class="step reveal"><div class="num">4</div><h3>Heal &amp; collect</h3><p>Watch realms come back to life, earn rewards, and hatch, raise, and evolve your own Elemonsters.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ELEMONSTERS ===== -->
+<section class="elemonsters pad" id="elemonsters">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">Meet the Elemonsters</span>
+      <h2 class="title">Six elements. One world to save.</h2>
+      <p class="sub">Each realm has its own guardian creature. Clean its element's trash to bring it back from the brink.</p>
+    </div>
+    <div class="ele-grid">
+      <div class="ele reveal"><div class="halo" style="background:var(--c-water)"></div><img src="assets/elemonsters/water_Elemonster.png" alt="Bloop"><h3>Bloop</h3><div class="elem" style="color:var(--c-water)">Water</div><div class="realm">The Deep Waters</div></div>
+      <div class="ele reveal"><div class="halo" style="background:var(--c-earth)"></div><img src="assets/elemonsters/earth_Elemonster.png" alt="Sproutz"><h3>Sproutz</h3><div class="elem" style="color:var(--c-earth)">Earth</div><div class="realm">The Green Lands</div></div>
+      <div class="ele reveal"><div class="halo" style="background:var(--c-fire)"></div><img src="assets/elemonsters/fire_Elemonster.png" alt="Blazo"><h3>Blazo</h3><div class="elem" style="color:var(--c-fire)">Fire</div><div class="realm">The Ember Fields</div></div>
+      <div class="ele reveal"><div class="halo" style="background:var(--c-air)"></div><img src="assets/elemonsters/air_Elemonster.png" alt="Wispo"><h3>Wispo</h3><div class="elem" style="color:#a87fd6">Air</div><div class="realm">The Sky Realm</div></div>
+      <div class="ele reveal"><div class="halo" style="background:var(--c-space)"></div><img src="assets/elemonsters/space_Elemonster.png" alt="Cosmix"><h3>Cosmix</h3><div class="elem" style="color:var(--c-space)">Space</div><div class="realm">The Cosmic Void</div></div>
+      <div class="ele reveal"><div class="halo" style="background:var(--c-light)"></div><img src="assets/elemonsters/Orbo.png" alt="Orbo"><h3>Orbo</h3><div class="elem" style="color:var(--c-light)">Light</div><div class="realm">Temple of Light</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== IMPACT ===== -->
+<section class="impact pad" id="impact">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">Real-World Impact</span>
+      <h2 class="title">Play a game. Change the planet.</h2>
+      <p class="sub">Trashure-Hunters turns the simple act of picking up litter into an adventure millions can share — and the results are real.</p>
+    </div>
+    <div class="stat-grid">
+      <div class="stat reveal"><div class="big">100%</div><div class="lbl">of in-game progress powered by real cleanups</div></div>
+      <div class="stat reveal"><div class="big">6</div><div class="lbl">elemental realms to restore, together</div></div>
+      <div class="stat reveal"><div class="big">∞</div><div class="lbl">streets, parks &amp; beaches waiting for a Hunter</div></div>
+    </div>
+    <p class="impact-note reveal">Every player makes their corner of the world a little cleaner. Together, Hunters make it <b>unrecognizable</b>.</p>
+  </div>
+</section>
+
+<!-- ===== WAITLIST ===== -->
+<section class="waitlist pad" id="waitlist">
+  <div class="wrap">
+    <div class="wl-card reveal">
+      <span class="eyebrow">Be First</span>
+      <h2>Join the Waitlist</h2>
+      <p class="sub">Get early access, founding-Hunter rewards, and news as the realms come online. No spam — just the launch.</p>
+      <form class="wl-form" id="wlForm" novalidate>
+        <input type="email" id="wlEmail" name="email" placeholder="you@email.com" autocomplete="email" required aria-label="Email address" />
+        <button class="btn btn-primary" type="submit">Count me in →</button>
+      </form>
+      <div class="wl-msg" id="wlMsg" role="status" aria-live="polite"></div>
+      <p class="wl-fine">By joining you agree to receive occasional updates about Trashure-Hunters.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap foot-inner">
+    <div class="foot-brand">
+      <img src="assets/logos/TH_icon.png" alt="Trashure-Hunters" />
+      <div class="studio"><img src="assets/logos/3shamrocks.png" alt="3Shamrocks Studio" /></div>
+    </div>
+    <div class="foot-meta">
+      <div>Clean the World. Win the Game.</div>
+      <div>© 2026 3Shamrocks Studio · Trashure-Hunters™ · <a href="https://trashure-hunters.com">trashure-hunters.com</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // sticky nav background
+  const nav=document.getElementById('nav');
+  const onScroll=()=>nav.classList.toggle('scrolled',window.scrollY>20);
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  // scroll reveal
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // waitlist (static-site friendly). To capture real signups, set FORM_ENDPOINT
+  // to a Formspree/Getform/Basin URL; otherwise it confirms + stores locally.
+  const FORM_ENDPOINT=""; // e.g. "https://formspree.io/f/xxxxxxx"
+  const form=document.getElementById('wlForm');
+  const msg=document.getElementById('wlMsg');
+  const emailEl=document.getElementById('wlEmail');
+  const valid=v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+
+  form.addEventListener('submit',async(e)=>{
+    e.preventDefault();
+    const email=emailEl.value.trim();
+    msg.className='wl-msg';
+    if(!valid(email)){msg.textContent='Please enter a valid email address.';msg.classList.add('err');return;}
+    msg.textContent='Joining…';
+    try{
+      if(FORM_ENDPOINT){
+        const r=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Accept':'application/json'},body:JSON.stringify({email})});
+        if(!r.ok)throw new Error('bad');
+      }else{
+        const list=JSON.parse(localStorage.getItem('th_waitlist')||'[]');
+        if(!list.includes(email))list.push(email);
+        localStorage.setItem('th_waitlist',JSON.stringify(list));
+      }
+      msg.textContent="🎉 You're on the list, Hunter! We'll be in touch.";
+      msg.classList.add('ok');
+      form.reset();
+    }catch(err){
+      msg.textContent='Something went wrong — please try again.';
+      msg.classList.add('err');
+    }
+  });
+</script>
+</body>
+</html>
