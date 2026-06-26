@@ -5,12 +5,19 @@ Official marketing site for **Trashure-Hunters™** — a real-world adventure g
 > **Clean the World. Win the Game.**
 
 ## Sections
-- **Hero** — slogan, logo, positioning ("Pokémon GO meets Ingress meets a Pixar environmental movie")
-- **Concept** — the core contract: clean real trash → heal the game world ("No villains, only neglect")
+- **Hero** — 2026 logo, slogan, positioning, floating Elemonster cluster ("Pokémon GO meets Ingress meets a Pixar environmental movie")
+- **Concept** — the core contract: clean real trash → heal the game world ("No villains, only neglect"), King Grime vs. restored world
+- **Gameplay showcase** — phone mockups of the real app (splash, live map, realm hunts)
 - **How It Works** — four steps: explore the map, scan with the AI Trash-Cam, clean it up, heal & collect
-- **Elemonsters** — the six elemental guardians (Bloop, Sproutz, Blazo, Wispo, Cosmix, Orbo)
+- **Elemonsters** — the team lineup band + the six elemental guardians (Bloop, Sproutz, Blazo, Wispo, Cosmix, Orbo)
 - **Impact** — real-world cleanup impact
+- **Studio** — 3Shamrocks Studio credit
 - **Waitlist** — email signup
+
+## Brand
+Display type is **Fredoka**; body/UI is the locked **Inter**. Uses the 2026 rebrand logos
+(`TH26_*`), white-removed (transparent) Elemonsters, and real gameplay screenshots in
+`assets/` (logos/, elemonsters/, app/, screens/). Heavy art is resized + JPEG-compressed for the web.
 
 ## Tech
 Single-file static site (`index.html`) with embedded CSS/JS and brand assets in `assets/`. No build step. Hosted on GitHub Pages.
